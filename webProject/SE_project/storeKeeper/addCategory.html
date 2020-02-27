@@ -1,0 +1,90 @@
+<html lang="en">
+<head>
+	<title>Add Ctegory</title>  
+          <link href="bootstrap.min.css" rel="stylesheet">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
+        <script src="bootstrap.min.js"></script> 
+          <script src="jquery-3.4.1.js"></script>
+          <script  src="bootstrap-validate.js"></script>
+</head>
+<body>
+<a href="#myDemoModal" role="button" class="btn btn-large btn-success" data-toggle="modal">Add Category</a>
+<!-- Modal HTML -->
+<div id="myDemoModal" class="modal fade">
+    <div class="modal-dialog modal-dialog-draggable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title justify-contgent-center">Add Category</h4>
+              
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                    <!--Blue select-->
+            </div>
+            <div class="modal-body">
+                <!-- CONTENT CONTENT CONTENT -->
+
+                <form class="form-container">
+                                    <div class="form-row">
+                                       <div class="col">
+                                        <label for="categoryname">Category Name</label>
+                                           <input type="text" id="categoryname" class="form-control" placeholder="Category Name">                                            
+                                      </div>
+                                     <div class="col">
+                                        <label for="date">Date</label>
+                                         <input type="date" id="date" name="bday" max="3000-12-31" min="1000-01-01" class="form-control">
+                                    </div>
+                                  </div>
+
+                                    <div class="col">
+                                        <label for="description">Descripion</label>
+                                      <textarea id="description" rows="3" class="form-control" placeholder="Descripion"></textarea>
+
+                                    </div>
+                                  
+            
+                            </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+                <button type="button" id="submit" class="btn btn-primary">Add Category</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="jquery-3.4.1.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function(){
+        // console.log("hello hello");
+        // alert("hello hello");
+
+      $('#submit').on('click',function() {
+        // alert("hello2")
+        // body...
+        var regex=/^[A-Za-z0-9._%+-]+@([A-Za-z0-9]+\.)+[a-z]{2,4}$/i;
+                var categoryname=$('#categoryname').val();
+                var description=$('#description').val();
+                var date=$('#date').val();
+
+               if (categoryname.trim()=='') {
+                  alert("Enter Item Category");
+                  $("#categoryname").focus();
+                  return false;
+                }
+               else if (description.trim()=='') {
+                  alert("Enter Item Descripion");
+                  $("#description").focus();
+                  return false;
+                }
+                else if (date.trim()=='') {
+                  alert("Enter date");
+                  $("#date").focus();
+                  return false;
+                }
+                else{
+                  return true;
+                }
+      });
+    });
+    </script>
+<!-- Modal HTML End -->
+</body>
+</html>

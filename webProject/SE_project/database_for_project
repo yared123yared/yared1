@@ -1,0 +1,170 @@
+drop database Store_AAIT_new;
+create database Store_AAIT_new;
+
+use Store_AAIT_new;
+create table user(fname varchar(50),lname varchar(50),
+uname varchar(30) primary key ,password varchar(50)
+,role varchar(30) not null);
+
+create table category(category_name varchar(50) primary key ,added_by 
+varchar(30),Descripton text,date Date,
+foreign key (added_by) references user(uname) 
+on update cascade on delete set null);
+
+create table brand(brand_name varchar(30) primary key unique,
+added_by varchar(30) ,date Date ,
+descripton text,
+category varchar(50),
+foreign key (category) references category(category_name) ,
+foreign key (added_by) references user(uname) 
+on update cascade on delete set null);
+
+
+create table stock(item_id int auto_increment primary key,stock_name varchar(50) ,
+ brand_name varchar(50) , category_name varchar(50), owner varchar(90),describtion text,added_by varchar(30),
+date Date,taken_status varchar(9),foreign key 
+ (brand_name) references brand(brand_name)on update cascade on delete restrict,
+ foreign key (category_name) references category(category_name)
+ on update cascade on delete set null,foreign key (added_by) references user(uname)
+ on update cascade on delete set null);
+
+
+
+create table taken_item(take_no int  auto_increment primary key ,item_id int ,
+
+user_name varchar(50) ,date Date,
+foreign key (user_name) references user(uname) on update cascade on delete set null,
+foreign key (item_id) references stock(item_id) on update cascade on delete set null);
+
+
+create table complains(complain_no int auto_increment primary key,
+user_name varchar(30),
+complain text,replier_id varchar(30),repley text,
+complain_date Date,repley_date Date,foreign key (user_name) 
+references user(uname)on update cascade on delete set null,
+foreign key (replier_id) references user(uname)
+on update cascade on delete set null);
+
+   create table requested_item(request_id int auto_increment primary key
+,user_name varchar(30),item_id int,request_date Date,
+aproved varchar(30),approved_by varchar(30),aprove_date Date,
+foreign key (user_name) references user(uname) on update cascade on delete set null,
+foreign key (item_id) references stock(item_id) on update cascade on delete set null,
+foreign key (approved_by) references user(uname) on update cascade on delete set null);
+-- insert into requested_item values(NULL,"atr/8583/10","1","2019-11-10",NULL,NULL,NULL);
+-- insert into requested_item values(NULL,"atr/8583/10","2","2019-11-10",NULL,NULL,NULL);
+-- insert into requested_item values(NULL,"atr/8583/10","1","2019-11-10",NULL,NULL,NULL);
+-- 
+insert into user values("getachew","tebikew",
+    "atr/8583/10","1234","user");
+insert into user values("fassikaw","kindye",
+    "atr/8584/10","1234","store_keeper");
+insert into user values("ashu","chufamo",
+    "atr/8586/10","1234","user");
+insert into user values("yared","solomon",
+    "atr/8587/10","1234","admin");
+insert into user values("eden","tilahun",
+    "atr/8589/10","1234","store_keeper");
+insert into user values("saron","wondirad",
+    "atr/8590/10","1234","user");
+
+insert into category values("Electronic",
+    "atr/8590/10","electronic devices like computers
+    ,projectors","2019-11-10");
+insert into category values("transportation",
+    "atr/8590/10","Different vehcles" ,"2019-11-10");
+insert into category values("wooden material",
+    "atr/8590/10","tables and chirs","2019-11-10");
+insert into category values("teaching material","atr/8590/10","papers,
+    books pens etc ...","2019-11-10");
+
+insert into brand values("toshiba","atr/8590/10","2019-11-10",
+    "electronic devices like computers
+    company","electronic");
+
+insert into brand values("toyota","atr/8590/10","2019-11-10",
+    "electronic devices like computers
+    company","transportation");
+
+insert into brand values("mistibush","atr/8590/10","2019-11-10",
+    "electronic devices like computers
+    company","transportation");
+insert into brand values("Radius","atr/8590/10","2019-11-10",
+    "electronic devices like computers
+    company","teaching material");
+
+insert into brand values("the paper","atr/8590/10","2019-11-10",
+    "electronic devices like computers
+    company","teaching material");
+
+
+insert into brand values("apple","atr/8590/10","2019-11-10",
+    "electronic devices like computers
+    company","electronic");
+    
+insert into brand values("THE WOODEN","atr/8590/10","2019-11-10",
+    "electronic devices like computers
+    company","WOODEN MATERIAL");
+insert into brand values("THE FURNITURE","atr/8590/10","2019-11-10",
+    "electronic devices like computers
+    company","WOODEN MATERIAL");
+
+    
+    
+
+-- insert into brand values("apple","atr/8590/10","2019-11-10",
+--     "electronic devices like computers 
+--     company",);
+-- insert into brand values("sumsung","atr/8590/10","2019-11-10",
+--     "electronic devices like computers 
+--     company");
+-- insert into brand values("toyota","atr/8590/10","2019-11-10",
+--     "car comppany");
+-- insert into brand values("HP","atr/8590/10","2019-11-10"
+--     "Hawlet packards electronic devices like 
+--     computers company");
+-- insert into brand values("Mistibush","atr/8590/10","2019-11-10",
+--     "Japeese Bank's car  company");
+-- insert into brand values("Radius","8584",,"2019-11-10",
+--     "pen producing comppany");
+-- 
+
+insert into stock values( NULL,"pen","Radius","teaching material","atr/8587/10",
+    "writing material","atr/8587/10","2019-11-10","null");
+insert into stock values( NULL,"laptope","toshiba","electronic","null",
+    "corei5 7th generation computer","atr/8587/10","2019-11-10","null");
+insert into stock values(NULL,"Desktope","apple","electronic","null",
+    "corei5 7th generation computer","atr/8587/10","2019-11-10","null");
+-- insert into stock  values(NULL,"table","gech wooden","wooden material","",
+--     "dectop comfortable tables","atr/8587/10","2019-11-10");
+-- insert into stock  values(NULL,"chair","gech wooden","wooden material",
+--     "taken","comfortable chairs","atr/8587/10","2019-11-10");
+
+
+insert into taken_item values(NULL,"1","atr/8583/10","2019-11-10");
+insert into taken_item values(NULL,"2","atr/8583/10","2019-11-10");
+insert into taken_item values(NULL,"3","atr/8586/10","2019-11-10");
+-- insert into taken_item values(NULL,"4","atr/8583/10","2019-11-10");
+insert into complains values( NULL,"atr/8587/10","the item i hava take is not working properiley please do some thing",
+ NULL,NULL,"2019-11-10",NULL);
+ insert into complains values( NULL,"atr/8587/10","the item i hava take is not working properiley please do some thing",
+ NULL,NULL,"2019-11-10",NULL);
+ insert into complains values( NULL,"atr/8583/10","i need the item to repaired",
+NULL,NULL,"2019-11-10",NULL);
+
+select * from brand;
+select * from stock;
+select stock_name,item_id,brand_name,category_name from stock where item_id in(select item_id from taken_item);
+
+select fname, lname
+ from user 
+where uname in(select user_name from taken_item);
+
+select category_name,brand_name,count(*) as NO_of_items from stock group by category_name,brand_name;
+select category.category_name,count(stock_name) as NO_of_items from category left join stock on 
+category.category_name=stock.category_name group by category.category_name;
+-- create database AAIT_USER;
+-- 
+-- use AAIT_USER;
+-- create table user(name varchar(50),email varchar(50)primary key,country varchar(30)  ,password varchar(50),gender varchar(30) ,position varchar(30) ,phonenumber int,city varchar(30));
+-- 
