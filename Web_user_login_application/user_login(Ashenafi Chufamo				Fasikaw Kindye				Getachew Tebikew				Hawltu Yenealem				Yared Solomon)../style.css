@@ -1,0 +1,46 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+body{
+    display: flex;
+    background-attachment: fixed;
+    background-image: url(yared.jpg);
+    background-size: cover;
+    font-family: new time 'Times New Roman';
+
+}
+h1{
+    font-size: 1vw;
+    color: white;
+    margin-top: 12%;
+
+}
+p{
+    margin-top: 13%;
+    font-size: 0.7vw;
+    color: white;
+}
+.row{
+    display: inline-block;
+}
+h3{
+    font-size: 1vw;
+    
+}
+.glyphicon-pencil{
+    font-size: 1vw;
+    float: right;
+
+}
+.container{
+    display: flex;
+}
+.col-md-6 {
+
+}
+#form{
+    position: absolute;
+    right: 20%;
+    top: 12%;
+}

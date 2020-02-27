@@ -1,0 +1,31 @@
+#main_div{
+    display: flex;
+}
+#left_div{
+    width: 35%;
+    height: 100%;
+    background-image: image("yared.jpg")
+}
+#left_div>img{
+    width: 100%;
+    height: 100%;
+    background-image: image("yared.jpg")
+}
+#upper_div{
+    width: 50%;
+    display: flex;
+}
+#upper_left{
+    margin-left: 12%;
+    
+    width: 40%;
+}
+
+#lower_div{
+    display: flex
+}
+#upper_right{
+    margin-left: 22%;
+    
+    width: 40%;
+}

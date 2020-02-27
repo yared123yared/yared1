@@ -1,0 +1,37 @@
+<?php
+session_start();
+if (isset($_GET["w1"])) {
+
+    $hello = $_GET["w1"];
+    $_SESSION["username"]=$hello;
+    // echo($_SESSION["username"]);
+    
+}
+?>
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="user.css">
+</head>
+<body>
+    <h1 id="disc">Person Discription</h1>
+    <div id="display">
+
+    Name:<h2 id="person_name">Name</h2>
+    Email:<h2 id="email">Email</h2>
+    Phone:<h2 id="phone">Phone</h2>
+    Position:<h2 id="position">Position</h2>
+    Gender:<h2 id="gender">gender</h2>
+    Country:<h2 id="country">country</h2>
+    City:<h2 id="city">City</h2>
+    
+    </div>
+    <script src="user.js"></script>
+</body>
+</html>

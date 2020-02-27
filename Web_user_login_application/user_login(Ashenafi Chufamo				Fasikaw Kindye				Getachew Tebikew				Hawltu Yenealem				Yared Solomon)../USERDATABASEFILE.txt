@@ -1,0 +1,6 @@
+create database LLogin_USER_NEW;
+
+use LLogin_USER_NEW;
+create table user(name varchar(50),email varchar(50)primary key,country varchar(30)  ,password varchar(50),gender varchar(30) ,position varchar(30) ,phonenumber INT,city varchar(30),descripton text);
+create table image(keyy varchar(50)primary key,name varchar(30),image LONGBLOB);
+-- 
